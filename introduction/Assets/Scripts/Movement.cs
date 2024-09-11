@@ -17,6 +17,7 @@ public class Movement : MonoBehaviour
     void Update()
     {
         float axis = Input.GetAxisRaw("Horizontal");
-        body.velocity = new Vector2(axis * speed, body.velocity.y);
+        body.AddForce(new Vector2(axis * speed, 0), ForceMode2D.Force);
+        //body.velocity = new Vector2(axis * speed, body.velocity.y);
     }
 }
