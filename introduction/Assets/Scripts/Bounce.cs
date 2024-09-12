@@ -9,8 +9,6 @@ public class Bounce : MonoBehaviour
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        print(collision.gameObject.CompareTag("Player"));
-
         if (collision.gameObject.CompareTag("Player"))
         {
             Rigidbody2D body = collision.gameObject.GetComponent<Rigidbody2D>();

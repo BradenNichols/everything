@@ -5,6 +5,7 @@ using UnityEngine;
 public class Movement : MonoBehaviour
 {
     public float speed;
+    public float jumpPower;
 
     private Rigidbody2D body;
 
@@ -17,7 +18,9 @@ public class Movement : MonoBehaviour
     void Update()
     {
         float axis = Input.GetAxisRaw("Horizontal");
-        body.AddForce(new Vector2(axis * speed, 0), ForceMode2D.Force);
-        //body.velocity = new Vector2(axis * speed, body.velocity.y);
+        body.AddForce(new Vector2((axis * Time.deltaTime) * (speed * 500), 0), ForceMode2D.Force);
+
+        if (Input.GetKeyDown(KeyCode.Space) || Input.GetKeyDown(KeyCode.UpArrow) || Input.GetKeyDown(KeyCode.W))
+            body.AddForce(new Vector2(0, jumpPower * 10), ForceMode2D.Impulse);
     }
 }
